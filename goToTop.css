@@ -1,0 +1,48 @@
+/* 좌하단 네비게이션 (미디어위키:Vector.js#goToTop.js) */
+#buttons {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 10;
+    
+    display: flex;
+    overflow: hidden;
+    
+    background: color-mix(in srgb,var(--site-background),#ffffffcc 80%);
+    backdrop-filter: var(--blur);
+    
+    box-shadow: var(--section-shadow);
+    border-radius: var(--radius);
+}
+
+#buttons > button {
+    display: block;
+    height: 2.5em;
+    width: 2.5em;
+    
+    background: none;
+    border: none;
+    
+    font-size: 20px;
+    cursor: pointer;
+    
+    transition: filter 250ms ease, box-shadow 250ms ease-out;
+    
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+#buttons > button:first-child {
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+#buttons > button:last-child {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+#buttons > button:active {
+    filter: var(--blur-active);
+    box-shadow: var(--placeholder-shadow), var(--widget-shadow-active);
+}
+#buttons > button:hover:not(:active) {
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+}
+/* 좌하단 네비게이션 끝 */
