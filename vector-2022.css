@@ -1,0 +1,577 @@
+/*
+	Float 스킨 (벡터 2022 기반·호환)
+	신형 벡터를 기반으로 벡터 레거시 시절 큰숲백과 스킨을 계승하면서 최신(?) 유행 디자인을 접목함
+	제작자: [[사용자:hsl0|hsl0]]
+*/
+:root {
+	--site-background: #c8ffc8; /* 추천: #c8ffc8, #eaeaea */
+	--radius: 16px;
+	--input-radius: 12px; /* --radius * 3 / 4 */
+	--check-radius: 8px; /* --radius / 2 */
+	--blur: blur(10px);
+	--blur-active: blur(0.75px);
+	--placeholder-shadow: #00000000 0 0;
+	--section-shadow: #00000030 0 0 15px 0;
+	--section-shadow-focus: #00000030 0 0 20px 0;
+	--widget-shadow: #00000030 0 0 8px 0;
+	--widget-shadow-focus: #3366cc60 0px 0px 9px 0px, inset 0 0 0 1px #36c /*#00000030 0px 0px 15px 3px*/;
+	--widget-shadow-active: inset #00000030 0px 0px 8px 0px;
+	--border-shadow: inset #a2a9b1 0 0 0 1px;
+}
+/* 홈페이지 배경색 */
+.vector-feature-zebra-design-disabled :is(body, .mw-page-container, .vector-header-container) {
+    background: var(--site-background);
+}
+
+.vector-feature-limited-width-clientpref-0 #mw-panel {
+	margin-right: 22px;
+}
+/* 본문 반투명 효과 */
+#content > :not(.vector-column-end) {
+    background: #fffffff7;
+}
+/* 본문 여백 넓히기 (가독성 향상) */
+#bodyContent {
+    padding: 0 1em 2.5em;
+    border-radius: 0 0 var(--radius) var(--radius); /* 본문 영역 아랫쪽 둥근 모서리 */
+}
+.mw-body-header {
+	padding: 1em 1em 0;
+	box-shadow: 0 calc(1em + 1px) 0 -1em #a2a9b1;
+	border-radius: var(--radius) var(--radius) 0 0; /* 본문 영역 윗쪽 둥근 모서리 */
+}
+.vector-page-toolbar {
+    padding: 0 1em 1px;
+}
+#ca-addsection {
+    margin-right: -0.5em;
+}
+#vector-page-titlebar-toc-label {
+    margin-left: 0.5em;
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    backdrop-filter: var(--blur);
+}
+
+/* 좌측 사이드바, 우측 도구 간격 */
+.vector-feature-zebra-design-disabled .mw-body {
+	padding: 0.5em 0 0;
+}
+@media screen and (min-width: 1000px) {
+    .vector-feature-zebra-design-disabled.client-js.vector-sticky-header-enabled.vector-feature-toc-pinned-clientpref-1 #vector-toc-pinned-container,
+    .vector-feature-zebra-design-disabled.client-js.vector-sticky-header-enabled.vector-feature-page-tools-pinned-enabled .vector-page-tools-landmark,
+    .vector-feature-zebra-design-disabled.client-js.vector-sticky-header-enabled .charts-stickyhead th {
+        top: 4rem !important;
+    }
+    .vector-feature-zebra-design-disabled.client-js.vector-sticky-header-enabled #vector-toc-pinned-container .vector-toc,
+    .vector-feature-zebra-design-disabled.client-js.vector-sticky-header-enabled #vector-page-tools-pinned-container .vector-page-tools {
+        max-height: calc(100vh - 4rem - 16px);
+    }
+    .vector-feature-zebra-design-disabled .mw-page-container-inner,
+    .vector-feature-zebra-design-disabled.vector-feature-page-tools-pinned-enabled .mw-body {
+        column-gap: 40px;
+    }
+}
+
+/* 좌측 목차, 우측 도구 그라데이션 제거 */
+.vector-feature-zebra-design-disabled  :is(#vector-toc-pinned-container .vector-toc, #vector-page-tools-pinned-container .vector-page-tools)::after {
+    content: none;
+}
+
+/* 우측 도구 여백, 반투명 둥근 모서리 설정 */
+.vector-feature-zebra-design-disabled .vector-pinned-container .vector-pinnable-element {
+    box-shadow: var(--section-shadow);
+    border-radius: var(--radius);
+    background-color: color-mix(in srgb,var(--site-background),#ffffffcc 80%);
+}
+.vector-feature-zebra-design-disabled #vector-page-tools-pinned-container .vector-page-tools {
+    padding: 0.25em 1em 0.5em;
+    width: 11em;
+}
+.vector-feature-limited-width-clientpref-1.vector-feature-zebra-design-disabled #vector-page-tools-pinned-container .vector-page-tools {
+    margin-left: 0;
+}
+.vector-feature-zebra-design-disabled .vector-column-end .vector-page-tools-landmark:first-child {
+    margin-top: 0;
+}
+.vector-feature-zebra-design-disabled .vector-column-end, .vector-feature-zebra-design-disabled.vector-feature-toc-pinned-clientpref-1 #mw-panel-toc {
+	contain: none;
+}
+
+/* 검색창 둥근 그림자 테두리 */
+.cdx-typeahead-search, #simpleSearch, #searchform, .cdx-search-input {
+    border-radius: var(--input-radius);
+}
+#simpleSearch input[type="search"], input.cdx-text-input__input[type="search"] {
+	border-radius: var(--input-radius) 0 0 var(--input-radius);
+}
+/* 검색창 비활성화시 투명 효과 */
+.cdx-search-input {
+    transition: box-shadow 250ms ease-out, background 250ms ease;
+}
+.cdx-search-input:not(:focus-within):not(:hover) :is(.cdx-text-input__input, .cdx-search-input__end-button) {
+    background: color-mix(in srgb, var(--site-background), #ffffff30 60%);
+}
+.cdx-search-input:not(:focus-within):not(:hover) .cdx-search-input__end-button {
+    color: transparent;
+}
+.cdx-search-input .cdx-text-input__input {
+	background: transparent;
+	border: none;
+}
+.cdx-search-input:not(:hover):not(:focus-within) {
+    box-shadow: var(--section-shadow);
+    border: none;
+}
+:is(#searchform, #vector-sticky-search-form) input[type="search"]:enabled:active {
+    box-shadow: var(--widget-shadow-active);
+    filter: var(--blur-active);
+}
+/* 검색창 입력시 더 진한 그림자 테두리 */
+.cdx-search-input:focus-within {
+    box-shadow: var(--section-shadow-focus);
+}
+/* 검색창 자동완성 둥근 그림자 테두리 */
+.cdx-menu {
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--section-shadow-focus);
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    backdrop-filter: var(--blur);
+    overflow: hidden;
+    border: none;
+}
+/* 자동완성 노출시 곡률이 일치하지 않는 버그 수정 */ 
+.cdx-typeahead-search--expanded input[type="search"] {
+    border-radius: var(--input-radius) 0 0 0;
+}
+/* 검색 버튼도 둥글게 */
+.cdx-search-input .cdx-button.cdx-search-input__end-button {
+    border-radius: 0 var(--input-radius) var(--input-radius) 0;
+    box-shadow: inset var(--placeholder-shadow);
+}
+/* 검색창 상호 작용시 테두리 */
+.cdx-search-input:is(:hover, :focus-within, :active) .cdx-button:not(.cdx-button--weight-quiet) {
+    box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+.cdx-search-input:is(:hover, :focus-within, :active) .cdx-text-input__input {
+    box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+.cdx-search-input .cdx-text-input__input:enabled:focus {
+    box-shadow: var(--placeholder-shadow), inset 0 0 0 1px #36c;
+}
+/* 자동완성 노출시 곡률이 일치하지 않는 버그 수정 */ 
+@media(max-width: 999px) {
+    .mw-header.vector-header-search-toggled .cdx-typeahead-search--expanded .cdx-search-input__end-button {
+        border-bottom-right-radius: var(--input-radius);
+    }
+}
+.cdx-typeahead-search--expanded .cdx-search-input {
+    border-bottom-left-radius: 0;
+}
+/* 검색창 테두리 제거시 외곽선이 어긋나는 버그 수정 */
+/*.cdx-search-input:not(:hover) .cdx-search-input__end-button {*/
+/*    margin: 0;*/
+/*}*/
+/* 고정 상단바 반투명 효과 */
+.vector-feature-zebra-design-disabled .vector-sticky-header-container {
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 80%);
+    backdrop-filter: var(--blur);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--section-shadow);
+}
+/* 고정 상단바 검색창 */
+#vector-sticky-search-form .cdx-search-input:not(:focus-within):not(:hover) :is(.cdx-text-input__input,.cdx-search-input__end-button) {
+    background: hsl(120 100% 99% / 0.4);
+}
+
+/* 확장 메뉴 */
+.vector-feature-zebra-design-disabled .vector-dropdown .vector-dropdown-content {
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 80%);
+    backdrop-filter: var(--blur);
+    padding: 0;
+    box-shadow: var(--section-shadow-focus);
+    border: none;
+}
+.vector-unpinned-container .vector-pinnable-element {
+    padding: 0.5em;
+}
+.vector-unpinned-container #vector-toc {
+    padding: 0.5em 0;
+}
+.vector-user-menu.vector-dropdown .vector-dropdown-content {
+    padding: 0.5em;
+}
+
+/* 사용자 메뉴 배경 테두리 */
+.mw-header .vector-user-links {
+    background: color-mix(in srgb, var(--site-background), #ffffffaa 80%);
+    border-radius: var(--radius);
+    box-shadow: var(--section-shadow); 
+    padding: 0 1em 0 0.5em;
+}
+#p-personal-label {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+.mw-echo-ui-notificationBadgeButtonPopupWidget-footer .oo-ui-buttonGroupWidget > .oo-ui-buttonElement:first-child > .oo-ui-buttonElement-button {
+    border-radius: 0 0 0 var(--radius);
+}
+.mw-echo-ui-notificationBadgeButtonPopupWidget-footer .oo-ui-buttonGroupWidget > .oo-ui-buttonElement:last-child > .oo-ui-buttonElement-button {
+    border-radius: 0 0 var(--radius) 0;
+}
+@media (min-width: 1000px) {
+	.mw-header .vector-user-links {
+	    padding: 0.5em 1em;
+	}
+}
+@media (max-width: 719px) {
+	.mw-header .vector-user-links {
+	    padding-left: 0;
+	}
+	.vector-user-links #pt-notifications-alert > a.mw-echo-notifications-badge:is(:hover, :not(:hover)) {
+	    border-radius: var(--input-radius) 0 0 var(--input-radius);
+	}
+}
+/* 사이드바 */
+.vector-feature-zebra-design-disabled #vector-main-menu-pinned-container .vector-main-menu {
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--site-background), #f8f9facc 85%);
+    box-shadow: var(--section-shadow);
+    border: none;
+    margin-left: 0;
+}
+#mw-panel {
+    border-radius: var(--radius); /* 둥근 그림자 테두리 */
+}
+#mw-panel #vector-main-menu a {
+   padding: 3px 6px;
+}
+/* 목차 둥근 그림자 테두리, 반투명, 사이드바 세로 정렬 */
+.vector-feature-zebra-design-disabled .vector-toc {
+	background: none;
+}
+.vector-feature-zebra-design-disabled #vector-toc-pinned-container .vector-toc {
+    padding: 0.25em 2em 0.75em;
+    margin-left: 22px;
+}
+/* 둥근 테두리와 안맞는 그라데이션 제거 */
+.vector-toc-not-collapsed .sidebar-toc:after {
+	display: none;
+}
+/* 꼬리글 여백 */
+#footer {
+    margin-top: 2em;
+}
+/* 목차 버튼 반투명 */
+#vector-toc-collapsed-button {
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 80%);
+    /* border-bottom-right-radius: var(--radius); */
+    backdrop-filter: var(--blur);
+}
+/* 분류 둥근 그림자 테두리 */
+#catlinks {
+    border-radius: var(--radius);
+    box-shadow: #00000030 0px 0px 10px 0px;
+    margin-top: 2em;
+    margin-bottom: -1em;
+    /*border: none;*/
+}
+/* 팝업 메뉴가 뜰 때 관련없는 섹션은 흐리게  */
+body:has(:is(.cdx-typeahead-search--expanded, .vector-dropdown-checkbox:checked):not(#vector-sticky-header *)) :is(.vector-header-start, .vector-header-end > *, .mw-page-container-inner > *):not(:has(.cdx-typeahead-search--expanded, .vector-dropdown-checkbox:checked)),
+body.vector-sticky-header-visible:has(#vector-sticky-header :is(.cdx-typeahead-search--expanded, .vector-dropdown-checkbox:checked)) :is(.vector-header-start, .vector-header-end > *, .mw-page-container-inner > *):not(:has(.cdx-typeahead-search--expanded, .vector-dropdown-checkbox:checked)),
+body:has(.mw-echo-ui-notificationBadgeButtonPopupWidget-popup:not(.oo-ui-element-hidden)) :is(.vector-header-start, .vector-header-end > *:not(.vector-user-links), .mw-page-container-inner > *) {
+    opacity: 70%;
+    filter: blur(3px);
+}
+.vector-header-start, .vector-header-end > *, .mw-page-container-inner > * {
+    transition: opacity 150ms ease-out;
+}
+
+/* 언어 추가 둥근 테두리 및 반투명 적용 */
+.grid.uls-menu {
+    box-shadow: var(--section-shadow-focus);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: none;
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    backdrop-filter: var(--blur);
+}
+
+.uls-menu > #search, .uls-lcd {
+    background: transparent;
+}
+
+input.uls-filterinput.uls-filtersuggestion {
+    background: transparent;
+}
+
+.uls-menu > #search {
+    margin: 0.5em;
+    width: calc(100% - 1em);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--site-background), #ffffffaa 80%);
+    border: none;
+    box-shadow: var(--section-shadow);
+}
+
+/* 알림 둥근 테두리 적용 */
+.oo-ui-popupWidget-popup {
+    border-radius: var(--radius);
+    box-shadow: var(--section-shadow-focus);
+    border: none;
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    backdrop-filter: var(--blur);
+}
+
+.oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor::before {
+    border: none;
+}
+
+/* 버튼 둥근 테두리 그림자 적용 */
+.oo-ui-buttonElement.oo-ui-widget-enabled > .oo-ui-buttonElement-button, .mw-ui-button, .cdx-button {
+    transition: box-shadow 250ms ease;
+}
+
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button, .mw-ui-button:not(:disabled):is(*, .mw-ui-progressive):not(.mw-ui-quiet), .cdx-button:not(.cdx-button--weight-quiet) {
+    border: none;
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+}
+
+.oo-ui-widget-enabled > .oo-ui-buttonElement-button:focus, .mw-ui-button:is(*, .mw-ui-progressive):not(:disabled):focus, .cdx-button:focus {
+    box-shadow: var(--widget-shadow-focus), inset 0 0 0 1px #3366cc, inset 0 0 0 2px #ffffff
+}
+
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover:not(:active), .mw-ui-button:is(*, .mw-ui-progressive):not(:disabled):hover, .cdx-button:not(.cdx-button--weight-quiet):hover:not(:active) {
+    box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+
+.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover:not(.oo-ui-buttonElement-framed *), .mw-ui-button.mw-ui-quiet:is(*, .mw-ui-progressive):not(:disabled):hover, .cdx-button--weight-quiet:hover {
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+}
+
+:where(.oo-ui-buttonElement, .oo-ui-buttonElement.oo-ui-buttonElement-framed).oo-ui-widget-enabled > .oo-ui-buttonElement-button:active,
+.mw-ui-button:is(*, .mw-ui-progressive):not(:disabled):active, .cdx-button:active {
+    box-shadow: var(--placeholder-shadow), var(--widget-shadow-active);
+    filter: var(--blur-active);
+}
+
+:where(.oo-ui-buttonElement, .oo-ui-buttonElement.oo-ui-buttonElement-framed):not(.oo-ui-buttonGroupWidget *):not(.oo-ui-buttonSelectWidget *) > .oo-ui-buttonElement-button,
+.mw-ui-button:not(.mw-ui-button-group *), .cdx-button {
+    border-radius: var(--input-radius)
+}
+
+:is(.oo-ui-buttonGroupWidget, .oo-ui-buttonSelectWidget) > .oo-ui-buttonElement:last-child .oo-ui-buttonElement-button, .mw-ui-button-group > :last-child {
+	border-top-right-radius: var(--input-radius);
+	border-bottom-right-radius: var(--input-radius);
+}
+
+:is(.oo-ui-buttonGroupWidget, .oo-ui-buttonSelectWidget) > .oo-ui-buttonElement:first-child .oo-ui-buttonElement-button, .mw-ui-button-group > :first-child {
+	border-top-left-radius: var(--input-radius);
+	border-bottom-left-radius: var(--input-radius);
+}
+
+/* 목차 버튼은 예외 */
+#vector-toc-collapsed-button {
+    border-radius: 0;
+}
+
+/* 입력 상자 둥근 테두리 그림자 적용 */
+.oo-ui-textInputWidget .oo-ui-inputWidget-input, .mw-ui-input {
+    border-radius: var(--input-radius);
+}
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input, .mw-ui-input:not(:disabled) {
+    border: none;
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+    transition: box-shadow 250ms ease;
+}
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input:focus, .mw-ui-input:not(:disabled):focus {
+    box-shadow: var(--widget-shadow-focus), inset var(--placeholder-shadow);
+}
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input:hover:not(:active), .mw-ui-input:not(:disabled):hover:not(:active) {
+    box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input:active, .mw-ui-input:not(:disabled):active {
+    box-shadow: var(--placeholder-shadow), var(--widget-shadow-active);
+    filter: var(--blur-active);
+}
+
+/* 최근 바뀜 필터는 예외 */
+.oo-ui-tagMultiselectWidget-input.oo-ui-textInputWidget .oo-ui-inputWidget-input {
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #a2a9b1;
+}
+
+/* 체크박스 둥근 테두리 그림자 */
+.oo-ui-checkboxInputWidget > input[type="checkbox"] + .oo-ui-checkboxInputWidget-checkIcon,
+.mw-ui-checkbox > input[type="checkbox"] + label::before {
+    border-radius: var(--check-radius);
+}
+
+.oo-ui-checkboxInputWidget.oo-ui-widget-enabled > input[type="checkbox"] + .oo-ui-checkboxInputWidget-checkIcon,
+.mw-ui-checkbox > input[type="checkbox"]:enabled + label::before {
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+    transition: box-shadow 250ms ease;
+    border: none;
+}
+
+.oo-ui-checkboxInputWidget.oo-ui-widget-enabled > input[type="checkbox"]:checked + .oo-ui-checkboxInputWidget-checkIcon,
+.mw-ui-checkbox > input[type="checkbox"]:enabled:checked + label::before {
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+}
+
+.oo-ui-checkboxInputWidget.oo-ui-widget-enabled > input[type="checkbox"]:focus + .oo-ui-checkboxInputWidget-checkIcon,
+.mw-ui-checkbox > input[type="checkbox"]:enabled:focus + label::before {
+    box-shadow: #3366cc90 0px 0px 15px 0px, inset 0 0 0 1px #36c;
+}
+
+.oo-ui-checkboxInputWidget.oo-ui-widget-enabled > input[type="checkbox"]:hover:not(:active) + .oo-ui-checkboxInputWidget-checkIcon,
+.mw-ui-checkbox > input[type="checkbox"]:enabled:hover:not(:active) + label::before {
+    box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+
+.oo-ui-checkboxInputWidget.oo-ui-widget-enabled > input[type="checkbox"]:active + .oo-ui-checkboxInputWidget-checkIcon,
+.mw-ui-checkbox > input[type="checkbox"]:enabled:active + label::before {
+    box-shadow: var(--placeholder-shadow), var(--widget-shadow-active);
+    filter: var(--blur-active);
+}
+
+/* 라디오 버튼 그림자 테두리 적용 */
+:is(*, .client-js) :is(.oo-ui-radioInputWidget, .mw-ui-radio) input[type="radio"]:enabled + :is(span, label::before) {
+    transition: box-shadow 250ms ease, background-color 100ms,color 100ms,border 100ms;
+}
+:is(.oo-ui-radioInputWidget, .mw-ui-radio) input[type="radio"]:enabled:not(:hover) + :is(span, label::before) {
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+}
+:is(.oo-ui-radioInputWidget, .mw-ui-radio) input[type="radio"]:enabled:not(:checked) + :is(span, label::before) {
+    border: none;
+}
+:is(.oo-ui-radioInputWidget, .mw-ui-radio) input[type="radio"]:enabled:hover:not(:active) + :is(span, label::before) {
+    box-shadow: var(--placeholder-shadow), inset #447ff5 0 0 0 1px;
+}
+:is(.oo-ui-radioInputWidget, .mw-ui-radio) input[type="radio"]:enabled:focus + :is(span, label::before) {
+    box-shadow: var(--widget-shadow-focus), inset var(--placeholder-shadow);
+}
+:is(.oo-ui-radioInputWidget, .mw-ui-radio) input[type="radio"]:enabled:active + label::before {
+    box-shadow: var(--widget-shadow-active), inset var(--placeholder-shadow);
+    filter: var(--blur-active);
+}
+
+/* 드롭다운 그림자 테두리 적용 */
+.oo-ui-dropdownInputWidget, .oo-ui-dropdownWidget-handle {
+    border-radius: var(--input-radius);
+    border: none;
+}
+.oo-ui-dropdownInputWidget:is(*, .oo-ui-widget-enabled) .oo-ui-dropdownWidget-handle {
+    transition: box-shadow 250ms ease;
+}
+.oo-ui-dropdownWidget-handle:not(:hover) {
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+}
+.oo-ui-dropdownWidget-handle:hover:not(:active) {
+	box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+.oo-ui-dropdownInputWidget:is(*, .oo-ui-widget-enabled) .oo-ui-dropdownWidget-handle:focus:not(:hover) {
+    box-shadow: var(--widget-shadow-focus), inset var(--placeholder-shadow);
+}
+.oo-ui-dropdownInputWidget:is(*, .oo-ui-widget-enabled) .oo-ui-dropdownWidget-handle:active {
+    box-shadow: var(--placeholder-shadow), var(--active-shadow);
+    filter: var(--blur-active);
+}
+.oo-ui-defaultOverlay > .oo-ui-selectWidget {
+    border-radius: var(--radius);
+    border: none;
+    box-shadow: var(--section-shadow-focus);
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    backdrop-filter: var(--blur);
+}
+
+/* 날짜 선택 둥근 그림림자 적용 */
+.mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled .mw-widgets-datetime-dateTimeInputWidget-handle,
+.mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-handle {
+    border-radius: var(--input-radius);
+    border: none;
+    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
+    transition: box-shadow 250ms ease;
+}
+
+.mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled .mw-widgets-datetime-dateTimeInputWidget-handle:hover:not(:active),
+.mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-handle:hover:not(:active) {
+    box-shadow: var(--placeholder-shadow), var(--border-shadow);
+}
+
+.mw-widgets-datetime-dateTimeInputWidget.oo-ui-widget-enabled .mw-widgets-datetime-dateTimeInputWidget-handle:active,
+.mw-widget-dateInputWidget.oo-ui-widget-enabled .mw-widget-dateInputWidget-handle:active {
+	box-shadow: var(--placeholder-shadow), var(--widget-shadow-active);
+}
+
+/* 모달 창 둥근 그림자 테두리 적용 */
+.oo-ui-windowManager-modal > .oo-ui-dialog.oo-ui-window-setup {
+    backdrop-filter: blur(4px);
+    background: color-mix(in srgb, var(--site-background), #ffffff87 30%);
+}
+
+.oo-ui-windowManager-modal.oo-ui-windowManager-floating > .oo-ui-dialog > .oo-ui-window-frame {
+    border-radius: var(--radius);
+    border: none;
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    box-shadow: var(--section-shadow-focus);
+    overflow: hidden;
+}
+
+.oo-ui-window-foot .oo-ui-messageDialog-actions-horizontal .oo-ui-actionWidget.oo-ui-buttonWidget > .oo-ui-buttonElement-button {
+    border-radius: 0;
+}
+
+.oo-ui-window-foot .oo-ui-messageDialog-actions-horizontal .oo-ui-actionWidget:first-child > .oo-ui-buttonElement-button {
+    border-bottom-left-radius: var(--radius);
+}
+.oo-ui-window-foot .oo-ui-messageDialog-actions-horizontal .oo-ui-actionWidget:last-child > .oo-ui-buttonElement-button {
+    border-bottom-right-radius: var(--radius);
+}
+
+.oo-ui-messageDialog-actions-horizontal .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
+    background: #ffffffcc;
+}
+
+.oo-ui-processDialog-navigation .oo-ui-buttonElement .oo-ui-buttonElement-button {
+    box-shadow: var(--placeholder-shadow);
+}
+
+:is(.oo-ui-processDialog-actions-other, .oo-ui-processDialog-navigation) .oo-ui-buttonElement .oo-ui-buttonElement-button {
+    border-radius: 0;
+}
+
+.oo-ui-windowManager-modal > .oo-ui-dialog {
+    overflow: visible;
+}
+
+/* 패널 레이아웃 둥근 그림자 테두리 적용 */
+.oo-ui-panelLayout-framed {
+    border-radius: var(--radius);
+    /*border: none;*/
+    /*box-shadow: #00000030 0px 0px 10px 0px;*/
+}
+
+/* 알림 메시지 둥근 그림자 테두리 적용 */
+.mw-notification {
+    box-shadow: var(--section-shadow-focus);
+    border-radius: var(--radius);
+    border: none;
+    background: color-mix(in srgb, var(--site-background), #ffffffcc 95%);
+    backdrop-filter: var(--blur);
+}
+
+/* 토론란 헤더 반투명 */
+.mw-sticky-header-element {
+    background: #ffffffcc;
+    backdrop-filter: var(--blur);
+    box-shadow: #00000030 0 7px 10px -7px;
+}
+
+/* 화면 크기 조정 버튼 */
+#p-dock-bottom .cdx-button {
+    height: 2.5em;
+    width: 2.5em;
+    background: color-mix(in srgb,var(--site-background),#ffffffcc 80%);
+    backdrop-filter: var(--blur);
+}
