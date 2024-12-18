@@ -1,4 +1,4 @@
-:root {
+fa:root {
 	--site-background: #eaeaea;
 	--radius: 16px;
 	--input-radius: 12px; /* --radius * 3 / 4 */
@@ -202,10 +202,13 @@
     background: color-mix(in srgb, var(--site-background), #ffffffaa 80%);
     border-radius: var(--radius);
     box-shadow: var(--section-shadow); 
-    padding: 0 1em 0 0.5em;
+    padding: 0 0.75em 0 0.5em;
 }
 #p-personal-label {
     border-radius: 0 var(--radius) var(--radius) 0;
+}
+#vector-user-links-dropdown-label {
+    padding-right: 8px;
 }
 .mw-echo-ui-notificationBadgeButtonPopupWidget-footer .oo-ui-buttonGroupWidget > .oo-ui-buttonElement:first-child > .oo-ui-buttonElement-button {
     border-radius: 0 0 0 var(--radius);
