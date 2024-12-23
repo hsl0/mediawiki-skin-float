@@ -1,4 +1,4 @@
-fa:root {
+:root {
 	--site-background: #eaeaea;
 	--radius: 16px;
 	--input-radius: 12px; /* --radius * 3 / 4 */
@@ -20,6 +20,10 @@ fa:root {
 
 .vector-feature-limited-width-clientpref-0 #mw-panel {
 	margin-right: 22px;
+}
+/* 본문, 우측 도구 그림자 */
+#content {
+	filter: drop-shadow(#00000030 0 0 15px);
 }
 /* 본문 반투명 효과 */
 #content > :not(.vector-column-end) {
@@ -74,7 +78,7 @@ fa:root {
 
 /* 우측 도구 여백, 반투명 둥근 모서리 설정 */
 .vector-feature-zebra-design-disabled .vector-pinned-container .vector-pinnable-element {
-    box-shadow: var(--section-shadow);
+/*     box-shadow: var(--section-shadow); 상위 요소 #content drop-shadow와 중복 */
     border-radius: var(--radius);
     background-color: color-mix(in srgb,var(--site-background),#ffffffcc 80%);
 }
