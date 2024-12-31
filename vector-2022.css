@@ -25,6 +25,10 @@
 #content {
 	filter: drop-shadow(#00000030 0 0 15px);
 }
+/* 우측 도구 중복 그림자 제거 */
+.vector-feature-zebra-design-disabled #content .vector-pinned-container .vector-pinnable-element {
+    box-shadow: unset;
+}
 /* 본문 반투명 효과 */
 #content > :not(.vector-column-end) {
     background: #fffffff7;
@@ -78,9 +82,9 @@
 
 /* 우측 도구 여백, 반투명 둥근 모서리 설정 */
 .vector-feature-zebra-design-disabled .vector-pinned-container .vector-pinnable-element {
-/*     box-shadow: var(--section-shadow); 상위 요소 #content drop-shadow와 중복 */
-    border-radius: var(--radius);
-    background-color: color-mix(in srgb,var(--site-background),#ffffffcc 80%);
+	box-shadow: var(--section-shadow);
+	border-radius: var(--radius);
+	background-color: color-mix(in srgb,var(--site-background),#ffffffcc 80%);
 }
 .vector-feature-zebra-design-disabled #vector-page-tools-pinned-container .vector-page-tools {
     padding: 0.25em 1em 0.5em;
