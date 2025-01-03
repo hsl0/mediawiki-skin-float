@@ -81,6 +81,9 @@ body, .mw-page-container, .vector-header-container {
 }
 
 /* 우측 도구 여백, 반투명 둥근 모서리 설정 */
+.vector-pinned-container {
+	background: none;
+}
 .vector-pinned-container .vector-pinnable-element {
 	box-shadow: var(--section-shadow);
 	border-radius: var(--radius);
@@ -176,6 +179,9 @@ body, .mw-page-container, .vector-header-container {
 /*}*/
 /* 고정 상단바 반투명 효과 */
 .vector-sticky-header-container {
+	background: none;
+}
+.vector-sticky-header-container .vector-sticky-header {
     background: color-mix(in srgb, var(--background-color-base), #ffffffcc 80%);
     backdrop-filter: var(--blur);
     border-radius: 0 0 var(--radius) var(--radius);
@@ -191,7 +197,6 @@ body, .mw-page-container, .vector-header-container {
     border-radius: var(--radius);
     background: color-mix(in srgb, var(--background-color-base), #ffffffcc 80%);
     backdrop-filter: var(--blur);
-    padding: 0;
     box-shadow: var(--section-shadow-focus);
     border: none;
 }
