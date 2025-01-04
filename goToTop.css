@@ -1,5 +1,5 @@
-/* 좌하단 네비게이션 (미디어위키:Vector.js#goToTop.js) */
-#buttons {
+/* 좌하단 네비게이션 (https://bigforest.a2hosted.com/wiki/Mediawiki:Gadget-NavigationButtons.js) */
+#navigation-buttons {
     position: fixed;
     bottom: 1rem;
     left: 1rem;
@@ -15,34 +15,12 @@
     border-radius: var(--radius);
 }
 
-#buttons > button {
-    display: block;
-    height: 2.5em;
-    width: 2.5em;
-    
-    background: none;
-    border: none;
-    
-    font-size: 20px;
-    cursor: pointer;
-    
-    transition: filter 250ms ease, box-shadow 250ms ease-out;
-    
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+#navigation-buttons .oo-ui-buttonElement {
+	padding: 0.15em;
+	font-size: 105%;
+	margin-right: 0;
 }
-#buttons > button:first-child {
-    border-radius: var(--radius) 0 0 var(--radius);
+
+#navigation-buttons .oo-ui-buttonElement:first-child {
+	margin-left: 0;
 }
-#buttons > button:last-child {
-    border-radius: 0 var(--radius) var(--radius) 0;
-}
-#buttons > button:active {
-    filter: var(--blur-active);
-    box-shadow: var(--placeholder-shadow), var(--widget-shadow-active);
-}
-#buttons > button:hover:not(:active) {
-    box-shadow: var(--widget-shadow), inset var(--placeholder-shadow);
-}
-/* 좌하단 네비게이션 끝 */
